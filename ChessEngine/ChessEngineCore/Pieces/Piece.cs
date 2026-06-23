@@ -34,7 +34,7 @@ namespace ChessEngine.ChessEngineCore
         public string pieceId
         {
             get { return _pieceId; }
-            set { _pieceId = value; setDefaultPos(); }
+            set { _pieceId = value; setPositionFromId(); }
         }
         public pieceColorEnum pieceColor
         {
@@ -84,7 +84,7 @@ namespace ChessEngine.ChessEngineCore
             get { return _validPosArr; }
             set { _validPosArr = value; }
         }
-        public void setDefaultPos()
+        public void setPositionFromId()
         {
             posRow = Convert.ToInt32(pieceId[0].ToString());
             posCol = Convert.ToInt32(pieceId[1].ToString());

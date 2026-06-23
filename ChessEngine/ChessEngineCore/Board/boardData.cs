@@ -17,6 +17,7 @@ namespace ChessEngine.ChessEngineCore.Board
         //---PIECE---
         public static string selectedPieceIndex = null;
         public static Piece selectedPiece = null;
+        public static bool isAnyPieceSelected = false;
         public static void initBoardData()
         {
             for(int i=0; i<8; i++)

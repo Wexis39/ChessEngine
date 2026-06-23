@@ -10,7 +10,7 @@ namespace ChessEngine.ChessEngineCore.Board
 {
     public static class updateChessBoardUI
     {
-        public static void _updateChessBoardUI(Form1 frm)
+        public static void _updateChessBoardUI()
         {
             for (int i = 0; i < formSettings.mainPanel.Controls.Count; i++)
             {
@@ -23,6 +23,10 @@ namespace ChessEngine.ChessEngineCore.Board
                 {
                     btn.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject(piece.fullImagePath);
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                else
+                {
+                    btn.BackgroundImage = null;
                 }
             }
         }

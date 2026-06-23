@@ -14,7 +14,7 @@ namespace ChessEngine.ChessEngineCore.Pieces
             isFirstMove = true;
             validPosArr = new string[2];
         }
-        public bool isFirstMove { get; set; }
+        public bool isFirstMove { get; set; } = true;
         public override void GetValidMoves()
         {
             moveCheck();
@@ -25,23 +25,31 @@ namespace ChessEngine.ChessEngineCore.Pieces
             string move2=null;
             if (pieceColor == pieceColorEnum.Black)
             {
-                move1 = (((posRow + 1).ToString()) + (posCol.ToString()));
-                move2 = (((posRow + 2).ToString()) + (posCol.ToString()));
+                if (posRow == 1)
+                {
+                    move1 = (((posRow + 1).ToString()) + (posCol.ToString()));
+                    move2 = (((posRow + 2).ToString()) + (posCol.ToString()));
+                }
+                else
+                {
+                    move1 = (((posRow + 1).ToString()) + (posCol.ToString()));
+                }
+
             }
             else if (pieceColor == pieceColorEnum.White)
             {
-                move1 = (((posRow - 1).ToString()) + (posCol.ToString()));
-                move2 = (((posRow - 2).ToString()) + (posCol.ToString()));
+                if (posRow == 6)
+                {
+                    move1 = (((posRow - 1).ToString()) + (posCol.ToString()));
+                    move2 = (((posRow - 2).ToString()) + (posCol.ToString()));
+                }
+                else
+                {
+                    move1 = (((posRow - 1).ToString()) + (posCol.ToString()));
+                }
             }
-            if (isFirstMove)
-            {
-                validPosArr[0] = move1;
-                validPosArr[1] = move2;
-            }
-            else
-            {
-                validPosArr[0] = move1;
-            }
+            validPosArr[0] = move1;
+            validPosArr[1] = move2;
         }
     }
 }

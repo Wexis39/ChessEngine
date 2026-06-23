@@ -22,7 +22,7 @@ namespace ChessEngine.ChessEngineCore
                     btn.FlatAppearance.BorderSize = 0;
                     btn.FlatStyle = FlatStyle.Flat;
                     btn.Click += buttonEvents.buttonClickEvent;
-                    //btn.Text=$"{i}{j}";
+                    btn.Text=$"{i}{j}";
                     if ((i + j) % 2 == 1)
                     {
                         btn.BackColor = Color.FromArgb(194, 131, 78);

@@ -18,7 +18,7 @@ namespace ChessEngine.ChessEngineCore
             createChessBoard._createChessBoard(frm);
             boardData.initBoardData();
             placePiecesDefaultPosition._placePiecesDefaultPosition();
-            updateChessBoardUI._updateChessBoardUI(frm);
+            updateChessBoardUI._updateChessBoardUI();
         }
     }
 }
