@@ -8,8 +8,9 @@ namespace ChessEngine.ChessEngineCore.Pieces
 {
     public class Queen : Piece
     {
-        public Queen(pieceColorEnum pieceColorParam, pieceTypeEnum pieceTypeParam) : base(pieceColorParam, pieceTypeParam)
+        public Queen(pieceColorEnum pieceColorParam) : base(pieceColorParam)
         {
+            pieceType = pieceTypeEnum.Queen;
         }
     }
 }

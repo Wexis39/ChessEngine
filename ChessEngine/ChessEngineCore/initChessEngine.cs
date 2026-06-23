@@ -11,14 +11,14 @@ namespace ChessEngine.ChessEngineCore
 {
     public static class initChessEngine
     {
-        public static void _initChessEngine(Form frm)
+        public static void _initChessEngine(Form1 frm)
         {
             createTopMenu._createTopMenu(frm);
             formSettings._formSettings(frm);
             createChessBoard._createChessBoard(frm);
             boardData.initBoardData();
             placePiecesDefaultPosition._placePiecesDefaultPosition();
-            updateChessBoardUI._updateChessBoardUI();
+            updateChessBoardUI._updateChessBoardUI(frm);
         }
     }
 }

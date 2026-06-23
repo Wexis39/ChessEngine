@@ -6,7 +6,7 @@ namespace ChessEngine.ChessEngineCore
 {
     public static class createChessBoard
     {
-        public static void _createChessBoard(Form frm)
+        public static void _createChessBoard(Form1 frm)
         {
             int locationX = 0;
             int locationY = 30;
@@ -18,7 +18,6 @@ namespace ChessEngine.ChessEngineCore
                     btn.Name = $"{i}{j}";
                     btn.Size = new System.Drawing.Size(80, 80);
                     btn.Location = new System.Drawing.Point(locationX, locationY);
-                    btn.Text = btn.Name;
                     btn.FlatAppearance.BorderSize = 0;
                     btn.FlatStyle = FlatStyle.Flat;
                     if ((i + j) % 2 == 1)

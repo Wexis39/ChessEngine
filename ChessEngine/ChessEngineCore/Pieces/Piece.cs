@@ -9,10 +9,9 @@ namespace ChessEngine.ChessEngineCore
 {
     public class Piece
     {
-        public Piece(pieceColorEnum pieceColorParam, pieceTypeEnum pieceTypeParam)
+        public Piece(pieceColorEnum pieceColorParam)
         {
             _pieceColor = pieceColorParam;
-            _pieceType = pieceTypeParam;
         }
         public enum pieceColorEnum
         {
@@ -30,9 +29,9 @@ namespace ChessEngine.ChessEngineCore
         }
         private pieceColorEnum _pieceColor;
         private pieceTypeEnum _pieceType;
-        private int _pieceId;
+        private string _pieceId;
         private string _fullImagePath;
-        public int pieceId
+        public string pieceId
         {
             get { return _pieceId; }
             set { _pieceId = value; }

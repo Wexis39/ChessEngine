@@ -8,8 +8,9 @@ namespace ChessEngine.ChessEngineCore.Pieces
 {
     public class Bishop : Piece
     {
-        public Bishop(pieceColorEnum pieceColorParam, pieceTypeEnum pieceTypeParam) : base(pieceColorParam, pieceTypeParam)
+        public Bishop(pieceColorEnum pieceColorParam) : base(pieceColorParam)
         {
+            pieceType = pieceTypeEnum.Bishop;
         }
     }
 }

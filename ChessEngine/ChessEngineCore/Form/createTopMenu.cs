@@ -7,7 +7,7 @@ namespace ChessEngine.ChessEngineCore
     {
         static bool isDragging = false;
         static Point startLocation = new Point(0, 0);
-        public static void _createTopMenu(Form frm)
+        public static void _createTopMenu(Form1 frm)
         {
             Panel panel = new Panel();
             Button closeBtn = new Button();

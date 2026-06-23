@@ -8,8 +8,9 @@ namespace ChessEngine.ChessEngineCore.Pieces
 {
     public class Rook : Piece
     {
-        public Rook(pieceColorEnum pieceColorParam, pieceTypeEnum pieceTypeParam) : base(pieceColorParam, pieceTypeParam)
+        public Rook(pieceColorEnum pieceColorParam) : base(pieceColorParam)
         {
+            pieceType = pieceTypeEnum.Rook;
         }
     }
 }

@@ -6,13 +6,13 @@ namespace ChessEngine.ChessEngineCore
     public static class formSettings
     {
         public static Panel mainPanel = new Panel();
-        public static void _formSettings(Form frm)
+        public static void _formSettings(Form1 frm)
         {
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Size = new Size(1_000, 670);
             chessMainPanel(frm);
         }
-        public static void chessMainPanel(Form frm)
+        public static void chessMainPanel(Form1 frm)
         {
             mainPanel.Size = new Size(640, 670);
             mainPanel.Location = new Point(0, 0);
