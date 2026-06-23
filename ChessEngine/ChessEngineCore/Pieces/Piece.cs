@@ -34,7 +34,7 @@ namespace ChessEngine.ChessEngineCore
         public string pieceId
         {
             get { return _pieceId; }
-            set { _pieceId = value; }
+            set { _pieceId = value; setDefaultPos(); }
         }
         public pieceColorEnum pieceColor
         {
@@ -60,12 +60,36 @@ namespace ChessEngine.ChessEngineCore
                 }
                 else
                 {
-                    _fullImagePath = "notFound";
+                    _fullImagePath = null;
                 }
                 return _fullImagePath;
             }
         }
-        public void GetValidMoves() { }
-        public void GetCaptures() { }
+        //---Position---
+        private int _posRow;
+        public int posRow
+        {
+            get { return Convert.ToInt32(pieceId[0].ToString()); }
+            set { _posRow = Convert.ToInt32(value); }
+        }
+        private int _posCol;
+        public int posCol
+        {
+            get { return Convert.ToInt32(pieceId[1].ToString()); }
+            set { _posCol = Convert.ToInt32(value); }
+        }
+        private string[] _validPosArr;
+        public string[] validPosArr
+        {
+            get { return _validPosArr; }
+            set { _validPosArr = value; }
+        }
+        public void setDefaultPos()
+        {
+            posRow = Convert.ToInt32(pieceId[0].ToString());
+            posCol = Convert.ToInt32(pieceId[1].ToString());
+        }
+        public virtual void GetValidMoves() { }
+        public virtual void GetCaptures() { }
     }
 }

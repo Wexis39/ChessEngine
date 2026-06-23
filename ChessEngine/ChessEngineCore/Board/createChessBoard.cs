@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessEngine.ChessEngineCore.Board;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,13 +21,15 @@ namespace ChessEngine.ChessEngineCore
                     btn.Location = new System.Drawing.Point(locationX, locationY);
                     btn.FlatAppearance.BorderSize = 0;
                     btn.FlatStyle = FlatStyle.Flat;
+                    btn.Click += buttonEvents.buttonClickEvent;
+                    //btn.Text=$"{i}{j}";
                     if ((i + j) % 2 == 1)
                     {
-                        btn.BackColor = Color.FromArgb(118, 150, 86);
+                        btn.BackColor = Color.FromArgb(194, 131, 78);
                     }
                     else
                     {
-                        btn.BackColor = Color.FromArgb(238, 238, 210);
+                        btn.BackColor = Color.FromArgb(239, 206, 161);
                     }
                     formSettings.mainPanel.Controls.Add(btn);
                     locationX += 80;
