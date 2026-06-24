@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download)
-
+<img width="1919" height="1032" alt="Screenshot 2026-06-24 135711" src="https://github.com/user-attachments/assets/d211b859-03d3-44e0-beba-cdf793637f34" />
 A lightweight, high-performance, and fully independent chess engine and library built from scratch using pure C#. This project aims to combine robust software engineering principles with deep chess logic, completely free of external dependencies.
 
 > ⚠️ **Project Status: Work in Progress (WIP)**  
@@ -41,6 +41,6 @@ To ensure the engine is both maintainable and capable of handling deep search tr
 To clone and run this repository locally:
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+git clone https://github.com/Wexis39/ChessEngine.git
 cd YOUR_REPO_NAME
 dotnet build
