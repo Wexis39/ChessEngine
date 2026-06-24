@@ -42,5 +42,5 @@ To clone and run this repository locally:
 
 ```bash
 git clone https://github.com/Wexis39/ChessEngine.git
-cd YOUR_REPO_NAME
+cd ChessEngine
 dotnet build
