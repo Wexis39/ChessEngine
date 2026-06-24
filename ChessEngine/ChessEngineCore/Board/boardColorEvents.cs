@@ -10,11 +10,15 @@ namespace ChessEngine.ChessEngineCore.Board
 {
     public static class boardColorEvents
     {
+        public static void colorBoard()
+        {
+            colorValidMoves();
+            colorCapturesMoves();
+            colorSelectedSquare();
+        }
         public static void colorValidMoves()
         {
-            string[] moveArray=boardData.selectedPiece.validPosArr;
-
-            colorSelectedSquare();
+            List<string> moveArray = boardData.selectedPiece.validPosArr;
             if (moveArray != null)
             {
                 for (int i = 0; i < formSettings.mainPanel.Controls.Count; i++)
@@ -29,6 +33,28 @@ namespace ChessEngine.ChessEngineCore.Board
                         else if (btn.BackColor == Color.FromArgb(239, 206, 161))
                         {
                             btn.BackColor = Color.FromArgb(163, 206, 105);
+                        }
+                    }
+                }
+            }
+        }
+        public static void colorCapturesMoves()
+        {
+            List<string> moveArray = boardData.selectedPiece.capturesPosArr;
+            if (moveArray != null)
+            {
+                for (int i = 0; i < formSettings.mainPanel.Controls.Count; i++)
+                {
+                    Button btn = formSettings.mainPanel.Controls[i] as Button;
+                    if (moveArray.Contains(btn.Name))
+                    {
+                        if (btn.BackColor == Color.FromArgb(194, 131, 78))
+                        {
+                            btn.BackColor = Color.FromArgb(220, 38, 8);
+                        }
+                        else if (btn.BackColor == Color.FromArgb(239, 206, 161))
+                        {
+                            btn.BackColor = Color.FromArgb(220, 38, 8);
                         }
                     }
                 }

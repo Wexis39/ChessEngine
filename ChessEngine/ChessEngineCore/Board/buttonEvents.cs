@@ -17,7 +17,10 @@ namespace ChessEngine.ChessEngineCore.Board
 
             if (boardData.isAnyPieceSelected == true)
             {
-                makeMove();
+                if (controlTurnColor())
+                {
+                    makeMoveEvent();
+                }
             }
             //else
             //{
@@ -57,35 +60,53 @@ namespace ChessEngine.ChessEngineCore.Board
         }
         public static void showValidMoves()
         {
-            if (boardData.selectedPiece != null)
+            //boardData.selectedPiece.pieceColor == boardData.turnColor ADDED
+            if (boardData.selectedPiece != null && boardData.selectedPiece.pieceColor == boardData.turnColor)
             {
                 boardData.selectedPiece.GetValidMoves();
                 boardColorEvents.restoreBoardColors();
-                boardColorEvents.colorValidMoves();
+                boardColorEvents.colorBoard();
             }
             else
             {
                 boardColorEvents.restoreBoardColors();
             }
         }
-        public static void makeMove()
+        public static void makeMoveEvent()
         {
             if (boardData.selectedPiece.validPosArr.Contains(boardData.selectedSquareIndex))
             {
-                int posX = Convert.ToInt32(boardData.selectedSquareIndex[0].ToString());
-                int posY = Convert.ToInt32(boardData.selectedSquareIndex[1].ToString());
-                int tempPosX = boardData.selectedPiece.posRow;
-                int tempPosY = boardData.selectedPiece.posCol;
-                boardData.piecesBoardData[posX, posY] = boardData.selectedPiece;
-                boardData.selectedPiece.pieceId = (posX.ToString() + posY.ToString());
-                boardData.selectedPiece.setPositionFromId();
-                boardData.piecesBoardData[tempPosX, tempPosY] = null;
-
-                updateChessBoardUI._updateChessBoardUI();
-                boardData.isAnyPieceSelected = false;
-                afterMoveResetSelecteds();
-                boardColorEvents.restoreBoardColors();
+                applyMove();
             }
+            if (!boardData.isAnyDatasNull())
+            {
+                if (boardData.selectedPiece.capturesPosArr != null)
+                {
+                    if (boardData.selectedPiece.capturesPosArr.Contains(boardData.selectedSquareIndex))
+                    {
+                        applyMove();
+                    }
+                }
+            }
+            //-----LABEL-----
+            formSettings.updateLabel();
+        }
+        public static void applyMove()
+        {
+            int posX = Convert.ToInt32(boardData.selectedSquareIndex[0].ToString());
+            int posY = Convert.ToInt32(boardData.selectedSquareIndex[1].ToString());
+            int tempPosX = boardData.selectedPiece.posRow;
+            int tempPosY = boardData.selectedPiece.posCol;
+            boardData.piecesBoardData[posX, posY] = boardData.selectedPiece;
+            boardData.selectedPiece.pieceId = (posX.ToString() + posY.ToString());
+            boardData.selectedPiece.setPositionFromId();
+            boardData.piecesBoardData[tempPosX, tempPosY] = null;
+
+            updateChessBoardUI._updateChessBoardUI();
+            boardData.isAnyPieceSelected = false;
+            afterMoveResetSelecteds();
+            boardColorEvents.restoreBoardColors();
+            changeColor();
         }
         public static void afterMoveResetSelecteds()
         {
@@ -93,6 +114,25 @@ namespace ChessEngine.ChessEngineCore.Board
             boardData.selectedSquareIndex = null;
             boardData.selectedPiece = null;
             boardData.selectedPieceIndex = null;
+        }
+        public static void changeColor()
+        {
+            if (boardData.turnColor == Piece.pieceColorEnum.Black)
+            {
+                boardData.turnColor = Piece.pieceColorEnum.White;
+            }
+            else
+            {
+                boardData.turnColor = Piece.pieceColorEnum.Black;
+            }
+        }
+        public static bool controlTurnColor()
+        {
+            if (boardData.selectedPiece.pieceColor == boardData.turnColor)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

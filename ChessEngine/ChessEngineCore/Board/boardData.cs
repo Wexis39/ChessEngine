@@ -18,6 +18,8 @@ namespace ChessEngine.ChessEngineCore.Board
         public static string selectedPieceIndex = null;
         public static Piece selectedPiece = null;
         public static bool isAnyPieceSelected = false;
+        //---TURN---
+        public static Piece.pieceColorEnum turnColor=Piece.pieceColorEnum.White;
         public static void initBoardData()
         {
             for(int i=0; i<8; i++)
@@ -27,6 +29,14 @@ namespace ChessEngine.ChessEngineCore.Board
                     piecesBoardData[i,j] = null;
                 }
             }
+        }
+        public static bool isAnyDatasNull()
+        {
+            if(selectedSquareIndex==null || selectedSquareButton==null || selectedPieceIndex==null || selectedPiece == null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

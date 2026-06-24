@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessEngine.ChessEngineCore.Board;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -78,8 +79,8 @@ namespace ChessEngine.ChessEngineCore
             get { return Convert.ToInt32(pieceId[1].ToString()); }
             set { _posCol = Convert.ToInt32(value); }
         }
-        private string[] _validPosArr;
-        public string[] validPosArr
+        private List<string> _validPosArr=new List<string>();
+        public List<string> validPosArr
         {
             get { return _validPosArr; }
             set { _validPosArr = value; }
@@ -88,6 +89,24 @@ namespace ChessEngine.ChessEngineCore
         {
             posRow = Convert.ToInt32(pieceId[0].ToString());
             posCol = Convert.ToInt32(pieceId[1].ToString());
+        }
+        private List<string> _capturesPosArr;
+        public List<string> capturesPosArr
+        {
+            get { return _capturesPosArr; }
+            set { _capturesPosArr = value; }
+        }
+        public bool sameColorBlock(int posX,int posY)
+        {
+            if (boardData.piecesBoardData[posX, posY] != null)
+            {
+                pieceColorEnum moveLocationColor = boardData.piecesBoardData[posX, posY].pieceColor;
+                if (moveLocationColor != pieceColor)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public virtual void GetValidMoves() { }
         public virtual void GetCaptures() { }
