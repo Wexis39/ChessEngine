@@ -46,10 +46,7 @@ namespace ChessEngine.ChessEngineCore.Board
         }
         public static bool isBlockingAnyPiece(int x, int y)
         {
-            if (piecesBoardData[x, y] == null)
-            {
-                return true;
-            }
+            if (piecesBoardData[x, y] == null){return true;}
             return false;
         }
         //---PAWN EN PASSANT PRIVATE----
