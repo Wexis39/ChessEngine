@@ -7,7 +7,7 @@ namespace ChessEngine.ChessEngineCore
     public static class formSettings
     {
         public static Panel mainPanel = new Panel();
-        public static Label lbl = new Label();
+        public static Label lblTurn = new Label();
         public static void _formSettings(Form1 frm)
         {
             frm.FormBorderStyle = FormBorderStyle.None;
@@ -22,15 +22,15 @@ namespace ChessEngine.ChessEngineCore
             frm.Controls.Add(mainPanel);
 
             //-----------------------
-            
-            lbl.Location = new Point(700, 50);
-            lbl.ForeColor = Color.Black;
-            lbl.Text = boardData.turnColor.ToString();
-            frm.Controls.Add(lbl);
+
+            lblTurn.Location = new Point(700, 50);
+            lblTurn.ForeColor = Color.Black;
+            lblTurn.Text = boardData.turnColor.ToString();
+            frm.Controls.Add(lblTurn);
         }
         public static void updateLabel()
         {
-            lbl.Text = boardData.turnColor.ToString();
+            lblTurn.Text = boardData.turnColor.ToString();
         }
     }
 }

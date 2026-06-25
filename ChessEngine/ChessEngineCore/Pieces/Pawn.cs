@@ -14,6 +14,8 @@ namespace ChessEngine.ChessEngineCore.Pieces
             pieceType = pieceTypeEnum.Pawn;
         }
         public bool isFirstMove { get; set; }
+        public bool enPassant { get; set; } = false;
+        public int enPassantMoveCount;
         public override void GetValidMoves()
         {
             validPosArr = new List<string>();
@@ -24,7 +26,7 @@ namespace ChessEngine.ChessEngineCore.Pieces
         public override void GetCaptures()
         {
             int colorToNumber = pieceColor == pieceColorEnum.Black ? 1 : -1;
-            if (((posRow + colorToNumber) <= 7 && (posRow + colorToNumber) >= 0))
+            if ((posRow + colorToNumber) <= 7 && (posRow + colorToNumber) >= 0)
             {
                 if((posCol + 1) <= 7)
                 {
@@ -39,6 +41,21 @@ namespace ChessEngine.ChessEngineCore.Pieces
                     {
                         capturesPosArr.Add((posRow + colorToNumber).ToString() + (posCol - 1).ToString());
                     }
+                }
+            }
+            //--EnPassant--
+            if ((posCol + 1) <= 7)
+            {
+                if (boardData.piecesBoardData[posRow, (posCol + 1)] != null && sameColorBlock(posRow, posCol + 1))
+                {
+                    checkEnPassant(posRow,(posCol + 1));
+                }
+            }
+            if ((posCol - 1) >= 0)
+            {
+                if (boardData.piecesBoardData[posRow, (posCol - 1)] != null && sameColorBlock(posRow, posCol - 1))
+                {
+                    checkEnPassant(posRow,(posCol - 1));
                 }
             }
         }
@@ -94,6 +111,15 @@ namespace ChessEngine.ChessEngineCore.Pieces
                         if (boardData.piecesBoardData[(posRow + moveOne), posCol] == null)
                         {
                             validPosArr.Add((posRow + moveTwo).ToString() + posCol.ToString());
+                            enPassant = true;
+                            if (pieceColor == pieceColorEnum.Black)
+                            {
+                                enPassantMoveCount = boardData.whiteMoveCount;
+                            }
+                            else if (pieceColor == pieceColorEnum.White)
+                            {
+                                enPassantMoveCount = boardData.blackMoveCount;
+                            }
                         }
                     }
                 }
@@ -102,6 +128,35 @@ namespace ChessEngine.ChessEngineCore.Pieces
                     if (boardData.piecesBoardData[(posRow + moveOne), posCol] == null)
                     {
                         validPosArr.Add((posRow + moveOne).ToString() + posCol.ToString());
+                        enPassant = false;
+                    }
+                }
+            }
+        }
+        public void checkEnPassant(int moveX,int moveY)
+        {
+            int posX = moveX;
+            int posY = moveY;
+            if (boardData.piecesBoardData[posX, posY].pieceType == pieceTypeEnum.Pawn)
+            {
+                Pawn pawn = boardData.piecesBoardData[posX, posY] as Pawn;
+                if (pawn.enPassant == true)
+                {
+                    if (pieceColor == pieceColorEnum.Black)
+                    {
+                        if (pawn.enPassantMoveCount == boardData.whiteMoveCount-1)
+                        {
+                            capturesPosArr.Add((posX+1).ToString() + posY.ToString());
+                            boardData.enPassantCapturesArr.Add(posX.ToString() + posY.ToString());
+                        }
+                    }
+                    else if (pieceColor == pieceColorEnum.White)
+                    {
+                        if (pawn.enPassantMoveCount == boardData.blackMoveCount)
+                        {
+                            capturesPosArr.Add((posX-1).ToString() + posY.ToString());
+                            boardData.enPassantCapturesArr.Add(posX.ToString() + posY.ToString());
+                        }
                     }
                 }
             }

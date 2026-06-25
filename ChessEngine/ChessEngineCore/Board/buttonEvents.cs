@@ -84,6 +84,10 @@ namespace ChessEngine.ChessEngineCore.Board
                 {
                     if (boardData.selectedPiece.capturesPosArr.Contains(boardData.selectedSquareIndex))
                     {
+                        if (boardData.enPassantCapturesArr.Count != 0 && boardData.enPassantCapturesArr!=null)
+                        {
+                            boardData.clearEnPassantCapturesArr();
+                        }
                         applyMove();
                     }
                 }
@@ -101,7 +105,10 @@ namespace ChessEngine.ChessEngineCore.Board
             boardData.selectedPiece.pieceId = (posX.ToString() + posY.ToString());
             boardData.selectedPiece.setPositionFromId();
             boardData.piecesBoardData[tempPosX, tempPosY] = null;
-
+            afterMoveEvent();
+        }
+        public static void afterMoveEvent()
+        {
             updateChessBoardUI._updateChessBoardUI();
             boardData.isAnyPieceSelected = false;
             afterMoveResetSelecteds();
@@ -120,10 +127,12 @@ namespace ChessEngine.ChessEngineCore.Board
             if (boardData.turnColor == Piece.pieceColorEnum.Black)
             {
                 boardData.turnColor = Piece.pieceColorEnum.White;
+                boardData.blackMoveCount++;
             }
             else
             {
                 boardData.turnColor = Piece.pieceColorEnum.Black;
+                boardData.whiteMoveCount++;
             }
         }
         public static bool controlTurnColor()

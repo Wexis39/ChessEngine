@@ -20,6 +20,8 @@ namespace ChessEngine.ChessEngineCore.Board
         public static bool isAnyPieceSelected = false;
         //---TURN---
         public static Piece.pieceColorEnum turnColor=Piece.pieceColorEnum.White;
+        public static int whiteMoveCount = 0;
+        public static int blackMoveCount = 0;
         public static void initBoardData()
         {
             for(int i=0; i<8; i++)
@@ -37,6 +39,24 @@ namespace ChessEngine.ChessEngineCore.Board
                 return true;
             }
             return false;
+        }
+        public static void deleteByRowAndColId(int rowId,int colId)
+        {
+            piecesBoardData[rowId, colId] = null;
+        }
+        //---PAWN EN PASSANT PRIVATE----
+        public static List<string> enPassantCapturesArr = new List<string>();
+        public static void clearEnPassantCapturesArr()
+        {
+            if (enPassantCapturesArr.Count!=0)
+            {
+                string firstPos = enPassantCapturesArr[0];
+                int posX = Convert.ToInt32(firstPos[0].ToString());
+                int posY = Convert.ToInt32(firstPos[1].ToString());
+                Console.WriteLine(posX + " - " + posY);
+                deleteByRowAndColId(posX, posY);
+                enPassantCapturesArr = new List<string>();
+            }
         }
     }
 }
