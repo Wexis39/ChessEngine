@@ -41,7 +41,6 @@ namespace ChessEngine.ChessEngineCore.Board
                 findPieceFromButtonIndex();
             }
             showValidMoves();
-
             if (boardData.selectedPiece != null && boardData.selectedPiece.validPosArr != null)
             {
                 boardData.isAnyPieceSelected = true;
@@ -63,7 +62,7 @@ namespace ChessEngine.ChessEngineCore.Board
             //boardData.selectedPiece.pieceColor == boardData.turnColor ADDED
             if (boardData.selectedPiece != null && boardData.selectedPiece.pieceColor == boardData.turnColor)
             {
-                boardData.selectedPiece.GetValidMoves();
+                boardData.selectedPiece.allPossibleMoves();
                 boardColorEvents.restoreBoardColors();
                 boardColorEvents.colorBoard();
             }

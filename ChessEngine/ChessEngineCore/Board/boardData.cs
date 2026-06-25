@@ -44,6 +44,14 @@ namespace ChessEngine.ChessEngineCore.Board
         {
             piecesBoardData[rowId, colId] = null;
         }
+        public static bool isBlockingAnyPiece(int x, int y)
+        {
+            if (piecesBoardData[x, y] == null)
+            {
+                return true;
+            }
+            return false;
+        }
         //---PAWN EN PASSANT PRIVATE----
         public static List<string> enPassantCapturesArr = new List<string>();
         public static void clearEnPassantCapturesArr()
@@ -53,7 +61,6 @@ namespace ChessEngine.ChessEngineCore.Board
                 string firstPos = enPassantCapturesArr[0];
                 int posX = Convert.ToInt32(firstPos[0].ToString());
                 int posY = Convert.ToInt32(firstPos[1].ToString());
-                Console.WriteLine(posX + " - " + posY);
                 deleteByRowAndColId(posX, posY);
                 enPassantCapturesArr = new List<string>();
             }

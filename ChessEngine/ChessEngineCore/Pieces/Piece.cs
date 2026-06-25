@@ -110,5 +110,6 @@ namespace ChessEngine.ChessEngineCore
         }
         public virtual void GetValidMoves() { }
         public virtual void GetCaptures() { }
+        public virtual void allPossibleMoves() { }
     }
 }

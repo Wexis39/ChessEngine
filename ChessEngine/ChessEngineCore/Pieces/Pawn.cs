@@ -16,15 +16,20 @@ namespace ChessEngine.ChessEngineCore.Pieces
         public bool isFirstMove { get; set; }
         public bool enPassant { get; set; } = false;
         public int enPassantMoveCount;
+        public override void allPossibleMoves()
+        {
+            capturesPosArr = new List<string>();
+            validPosArr = new List<string>();
+            GetValidMoves();
+            GetCaptures();
+        }
         public override void GetValidMoves()
         {
-            validPosArr = new List<string>();
-            capturesPosArr = new List<string>();
             makeMove();
-            GetCaptures();
         }
         public override void GetCaptures()
         {
+            boardData.enPassantCapturesArr = new List<string>();
             int colorToNumber = pieceColor == pieceColorEnum.Black ? 1 : -1;
             if ((posRow + colorToNumber) <= 7 && (posRow + colorToNumber) >= 0)
             {
