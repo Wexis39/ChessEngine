@@ -25,6 +25,10 @@ namespace ChessEngine.ChessEngineCore.Pieces
             checkUpLeft();
             checkDownRight();
             checkDownLeft();
+            checkLeftUp();
+            checkLeftDown();
+            checkRightUp();
+            checkRightDown();
         }
         public void checkUpRight()
         {
@@ -38,7 +42,10 @@ namespace ChessEngine.ChessEngineCore.Pieces
                 }
                 else
                 {
-                    validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
                 }
             }
         }
@@ -54,7 +61,10 @@ namespace ChessEngine.ChessEngineCore.Pieces
                 }
                 else
                 {
-                    validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
                 }
             }
         }
@@ -70,7 +80,10 @@ namespace ChessEngine.ChessEngineCore.Pieces
                 }
                 else
                 {
-                    validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
                 }
             }
         }
@@ -86,7 +99,86 @@ namespace ChessEngine.ChessEngineCore.Pieces
                 }
                 else
                 {
-                    validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
+                }
+            }
+        }
+        public void checkLeftUp()
+        {
+            int newPosCol = posCol - 2;
+            int newPosRow = posRow -1;
+            if (newPosCol >= 0 && newPosRow >= 0)
+            {
+                if (sameColorBlock(newPosRow, newPosCol))
+                {
+                    capturesPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                }
+                else
+                {
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
+                }
+            }
+        }
+        public void checkLeftDown()
+        {
+            int newPosCol = posCol - 2;
+            int newPosRow = posRow + 1;
+            if (newPosCol >= 0 && newPosRow <= 7)
+            {
+                if (sameColorBlock(newPosRow, newPosCol))
+                {
+                    capturesPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                }
+                else
+                {
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
+                }
+            }
+        }
+        public void checkRightUp()
+        {
+            int newPosCol = posCol + 2;
+            int newPosRow = posRow - 1;
+            if (newPosCol <= 7 && newPosRow >= 0)
+            {
+                if (sameColorBlock(newPosRow, newPosCol))
+                {
+                    capturesPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                }
+                else
+                {
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
+                }
+            }
+        }
+        public void checkRightDown()
+        {
+            int newPosCol = posCol + 2;
+            int newPosRow = posRow + 1;
+            if (newPosCol <= 7 && newPosRow <= 7)
+            {
+                if (sameColorBlock(newPosRow, newPosCol))
+                {
+                    capturesPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                }
+                else
+                {
+                    if (boardData.isBlockingAnyPiece(newPosRow, newPosCol))
+                    {
+                        validPosArr.Add(newPosRow.ToString() + newPosCol.ToString());
+                    }
                 }
             }
         }
