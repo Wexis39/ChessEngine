@@ -77,12 +77,16 @@ namespace ChessEngine.ChessEngineCore.Board
         {
             King king = new King(pieceColorEnum.Black);
             king.pieceId = "04";
+            boardData.blackKingIndexX=0;
+            boardData.blackKingIndexY=4;
             boardData.piecesBoardData[0, 4] = king;
         }
         public static void createWhiteKing()
         {
             King king = new King(pieceColorEnum.White);
             king.pieceId = "74";
+            boardData.whiteKingIndexX=7;
+            boardData.whiteKingIndexY=4;
             boardData.piecesBoardData[7, 4] = king;
         }
         public static void createBlackKnight()

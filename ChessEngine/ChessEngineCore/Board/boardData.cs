@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ChessEngine.ChessEngineCore.Piece;
 
 namespace ChessEngine.ChessEngineCore.Board
 {
@@ -19,9 +20,14 @@ namespace ChessEngine.ChessEngineCore.Board
         public static Piece selectedPiece = null;
         public static bool isAnyPieceSelected = false;
         //---TURN---
-        public static Piece.pieceColorEnum turnColor=Piece.pieceColorEnum.White;
+        public static pieceColorEnum turnColor=pieceColorEnum.White;
         public static int whiteMoveCount = 0;
         public static int blackMoveCount = 0;
+        //---KING DATA----
+        public static int whiteKingIndexX;
+        public static int whiteKingIndexY;
+        public static int blackKingIndexX;
+        public static int blackKingIndexY;
         public static void initBoardData()
         {
             for(int i=0; i<8; i++)

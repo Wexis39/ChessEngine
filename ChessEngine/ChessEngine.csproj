@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChessEngineCore\Board\allPossibleMoveData.cs" />
     <Compile Include="ChessEngineCore\Board\boardColorEvents.cs" />
     <Compile Include="ChessEngineCore\Board\boardData.cs" />
+    <Compile Include="ChessEngineCore\Board\chessLogicFuncs.cs" />
     <Compile Include="ChessEngineCore\Board\createChessBoard.cs" />
     <Compile Include="ChessEngineCore\Board\placePiecesDefaultPosition.cs" />
     <Compile Include="ChessEngineCore\Board\buttonEvents.cs" />

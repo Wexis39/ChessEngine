@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ChessEngine.ChessEngineCore.Piece;
 
 namespace ChessEngine.ChessEngineCore.Board
 {
@@ -22,20 +23,6 @@ namespace ChessEngine.ChessEngineCore.Board
                     makeMoveEvent();
                 }
             }
-            //else
-            //{
-            //    findPieceFromButtonIndex();
-            //    showValidMoves();
-
-            //    if (boardData.selectedPiece != null && boardData.selectedPiece.validPosArr != null)
-            //    {
-            //        boardData.isAnyPieceSelected = true;
-            //    }
-            //    else
-            //    {
-            //        boardData.isAnyPieceSelected = false;
-            //    }
-            //}
             if(boardData.selectedSquareIndex != null)
             {
                 findPieceFromButtonIndex();
@@ -59,10 +46,20 @@ namespace ChessEngine.ChessEngineCore.Board
         }
         public static void showValidMoves()
         {
-            //boardData.selectedPiece.pieceColor == boardData.turnColor ADDED
             if (boardData.selectedPiece != null && boardData.selectedPiece.pieceColor == boardData.turnColor)
             {
-                boardData.selectedPiece.allPossibleMoves();
+                if (chessLogicFuncs.inCheckBlackKing)
+                {
+                    chessLogicFuncs.kingInCheckMoves(boardData.selectedPiece);
+                }
+                else if (chessLogicFuncs.inCheckWhiteKing)
+                {
+                    chessLogicFuncs.kingInCheckMoves(boardData.selectedPiece);
+                }
+                else
+                {
+                    boardData.selectedPiece.allPossibleMoves();
+                }
                 boardColorEvents.restoreBoardColors();
                 boardColorEvents.colorBoard();
             }
@@ -91,6 +88,8 @@ namespace ChessEngine.ChessEngineCore.Board
                     }
                 }
             }
+            allPossibleMoveData.calculatePossibeMoves();
+            chessLogicFuncs.isKingInCheck();
             //-----LABEL-----
             formSettings.updateLabel();
         }
@@ -102,9 +101,26 @@ namespace ChessEngine.ChessEngineCore.Board
             int tempPosY = boardData.selectedPiece.posCol;
             boardData.piecesBoardData[posX, posY] = boardData.selectedPiece;
             boardData.selectedPiece.pieceId = (posX.ToString() + posY.ToString());
+            setKingIndex(boardData.selectedPiece,posX,posY);
             boardData.selectedPiece.setPositionFromId();
             boardData.piecesBoardData[tempPosX, tempPosY] = null;
             afterMoveEvent();
+        }
+        public static void setKingIndex(Piece piece,int newPosX,int newPosY)
+        {
+            if(piece.pieceType== pieceTypeEnum.King)
+            {
+                if(boardData.turnColor== pieceColorEnum.White)
+                {
+                    boardData.whiteKingIndexX = newPosX;
+                    boardData.whiteKingIndexY = newPosY;
+                }
+                else
+                {
+                    boardData.blackKingIndexX = newPosX;
+                    boardData.blackKingIndexY = newPosY;
+                }
+            }
         }
         public static void afterMoveEvent()
         {
@@ -123,14 +139,14 @@ namespace ChessEngine.ChessEngineCore.Board
         }
         public static void changeColor()
         {
-            if (boardData.turnColor == Piece.pieceColorEnum.Black)
+            if (boardData.turnColor == pieceColorEnum.Black)
             {
-                boardData.turnColor = Piece.pieceColorEnum.White;
+                boardData.turnColor = pieceColorEnum.White;
                 boardData.blackMoveCount++;
             }
             else
             {
-                boardData.turnColor = Piece.pieceColorEnum.Black;
+                boardData.turnColor = pieceColorEnum.Black;
                 boardData.whiteMoveCount++;
             }
         }
