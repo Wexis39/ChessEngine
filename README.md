@@ -5,6 +5,7 @@
 [![Architecture: OOP](https://img.shields.io/badge/Architecture-Object_Oriented-green.svg)]()
 
 <img width="425" height="446" alt="Board UI 1" src="https://github.com/user-attachments/assets/0dbe7621-342e-43c7-8540-f1f0d72e2198" />
+<img width="426" height="446" alt="4" src="https://github.com/user-attachments/assets/36c243b3-8b50-4589-a696-575c867384ea" />
 
 ---
 
