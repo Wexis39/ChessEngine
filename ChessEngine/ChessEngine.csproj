@@ -53,7 +53,7 @@
     <Compile Include="ChessEngineCore\Board\createChessBoard.cs" />
     <Compile Include="ChessEngineCore\Board\placePiecesDefaultPosition.cs" />
     <Compile Include="ChessEngineCore\Board\buttonEvents.cs" />
-    <Compile Include="ChessEngineCore\Board\PromotionForm.cs">
+    <Compile Include="ChessEngineCore\Form\PromotionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChessEngineCore\Board\updateChessBoardUI.cs" />

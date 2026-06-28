@@ -142,12 +142,12 @@ namespace ChessEngine.ChessEngineCore.Board
 
                 if (isKingInCheck)
                 {
-                    string winner = (playerColor == Piece.pieceColorEnum.White) ? "SİYAH" : "BEYAZ";
-                    MessageBox.Show($"CHECKMATE! {winner} kazandı.", "Oyun Bitti");
+                    string winner = (playerColor == Piece.pieceColorEnum.White) ? "BLACK" : "WHITE";
+                    MessageBox.Show($"CHECKMATE! {winner} Won.", "Gameover");
                 }
                 else
                 {
-                    MessageBox.Show("STALEMATE! Berabere.", "Oyun Bitti");
+                    MessageBox.Show("STALEMATE! Draw.", "Gameover");
                 }
             }
         }

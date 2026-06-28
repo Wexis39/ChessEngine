@@ -11,7 +11,7 @@ namespace ChessEngine.ChessEngineCore
         public static void _formSettings(Form1 frm)
         {
             frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Size = new Size(1_000, 670);
+            frm.Size = new Size(640, 670);
             chessMainPanel(frm);
         }
         public static void chessMainPanel(Form1 frm)
@@ -20,8 +20,6 @@ namespace ChessEngine.ChessEngineCore
             mainPanel.Location = new Point(0, 0);
             mainPanel.Name = "mainPanel";
             frm.Controls.Add(mainPanel);
-
-            //-----------------------
 
             lblTurn.Location = new Point(700, 50);
             lblTurn.ForeColor = Color.Black;
