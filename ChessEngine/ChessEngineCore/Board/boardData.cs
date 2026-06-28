@@ -59,14 +59,7 @@ namespace ChessEngine.ChessEngineCore.Board
         public static List<string> enPassantCapturesArr = new List<string>();
         public static void clearEnPassantCapturesArr()
         {
-            if (enPassantCapturesArr.Count!=0)
-            {
-                string firstPos = enPassantCapturesArr[0];
-                int posX = Convert.ToInt32(firstPos[0].ToString());
-                int posY = Convert.ToInt32(firstPos[1].ToString());
-                deleteByRowAndColId(posX, posY);
-                enPassantCapturesArr = new List<string>();
-            }
+            enPassantCapturesArr = new List<string>();
         }
     }
 }

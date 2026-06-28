@@ -100,7 +100,6 @@ namespace ChessEngine.ChessEngineCore.Board
                     int capturedRow = (boardData.selectedPiece.pieceColor == pieceColorEnum.White) ? posX + 1 : posX - 1;
                     boardData.piecesBoardData[capturedRow, posY] = null;
                 }
-                boardData.clearEnPassantCapturesArr();
             }
 
             boardData.piecesBoardData[posX, posY] = boardData.selectedPiece;
@@ -109,6 +108,13 @@ namespace ChessEngine.ChessEngineCore.Board
             boardData.selectedPiece.setPositionFromId();
             boardData.selectedPiece.hasMoved = true;
             boardData.piecesBoardData[tempPosX, tempPosY] = null;
+
+            if (boardData.selectedPiece.pieceType == pieceTypeEnum.Pawn && Math.Abs(posX - tempPosX) == 2)
+            {
+                Pawn movedPawn = (Pawn)boardData.selectedPiece;
+                movedPawn.enPassant = true;
+                movedPawn.enPassantMoveCount = (movedPawn.pieceColor == pieceColorEnum.White) ? boardData.whiteMoveCount : boardData.blackMoveCount;
+            }
 
             if (boardData.selectedPiece.pieceType == pieceTypeEnum.Pawn && (posX == 0 || posX == 7))
             {

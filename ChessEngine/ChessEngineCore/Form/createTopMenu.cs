@@ -25,7 +25,7 @@ namespace ChessEngine.ChessEngineCore
             closeBtn.Size = new Size(30, 30);
             closeBtn.ForeColor = Color.White;
             closeBtn.BackColor = Color.Red;
-            closeBtn.Location = new Point(970, 0);
+            closeBtn.Location = new Point(610, 0);
             closeBtn.Font = new Font(FontFamily.GenericMonospace, 14, FontStyle.Bold);
             closeBtn.Click += (s, e) => { frm.Close(); };
 
@@ -33,12 +33,12 @@ namespace ChessEngine.ChessEngineCore
             hideBtn.Size = new Size(30, 30);
             hideBtn.ForeColor = Color.Black;
             hideBtn.BackColor = Color.WhiteSmoke;
-            hideBtn.Location = new Point(940, 0);
+            hideBtn.Location = new Point(580, 0);
             hideBtn.Font = new Font(FontFamily.GenericMonospace, 15, FontStyle.Bold);
             hideBtn.Click += (s, e) => { frm.WindowState = FormWindowState.Minimized; };
 
             panel.BackColor = Color.FromArgb(255, 255, 240);
-            panel.Size = new Size(1000, 30);
+            panel.Size = new Size(640, 30);
             panel.Location = new Point(0, 0);
             panel.Controls.Add(closeBtn);
             panel.Controls.Add(hideBtn);

@@ -18,6 +18,8 @@ namespace ChessEngine.ChessEngineCore.Board
             allValidMovesBlack = new List<string>();
             allCapturesMovesBlack = new List<string>();
 
+            boardData.enPassantCapturesArr = new List<string>();
+
             tempBoardData = (Piece[,])boardData.piecesBoardData.Clone();
             for (int i = 0; i < 8; i++)
             {
