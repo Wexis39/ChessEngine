@@ -131,7 +131,7 @@ namespace ChessEngine.ChessEngineCore.Board
                     if (piece != null && piece.pieceColor == playerColor)
                     {
                         controlValids(piece);
-                        totalLegalMoves += piece.validPosArr.Count;
+                        totalLegalMoves += piece.validPosArr.Count + piece.capturesPosArr.Count;
                     }
                 }
             }
