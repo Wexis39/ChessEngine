@@ -47,6 +47,7 @@ namespace ChessEngine.ChessEngineCore
             get{ return _pieceType; }
             set{ _pieceType = value; }
         }
+        public bool hasMoved { get; set; } = false;
         public string fullImagePath
         {
             get
@@ -96,11 +97,13 @@ namespace ChessEngine.ChessEngineCore
             get { return _capturesPosArr; }
             set { _capturesPosArr = value; }
         }
-        public bool sameColorBlock(int posX,int posY)
+        public bool sameColorBlock(int posX, int posY, Piece[,] board = null)
         {
-            if (boardData.piecesBoardData[posX, posY] != null)
+            Piece[,] activeBoard = board ?? boardData.piecesBoardData;
+
+            if (activeBoard[posX, posY] != null)
             {
-                pieceColorEnum moveLocationColor = boardData.piecesBoardData[posX, posY].pieceColor;
+                pieceColorEnum moveLocationColor = activeBoard[posX, posY].pieceColor;
                 if (moveLocationColor != pieceColor)
                 {
                     return true;
@@ -110,6 +113,6 @@ namespace ChessEngine.ChessEngineCore
         }
         public virtual void GetValidMoves() { }
         public virtual void GetCaptures() { }
-        public virtual void allPossibleMoves() { }
+        public virtual void allPossibleMoves(Piece[,] board = null) { }
     }
 }

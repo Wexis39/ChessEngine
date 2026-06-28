@@ -13,7 +13,7 @@ namespace ChessEngine.ChessEngineCore.Pieces
         {
             pieceType = pieceTypeEnum.Rook;
         }
-        public override void allPossibleMoves()
+        public override void allPossibleMoves(Piece[,] board = null)
         {
             capturesPosArr = new List<string>();
             GetValidMoves();

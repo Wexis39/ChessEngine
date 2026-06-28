@@ -68,24 +68,24 @@ namespace ChessEngine.ChessEngineCore.Board
         }
         public static void colorKingInCheck()
         {
-            string kingIndex="";
-            bool value = (chessLogicFuncs.inCheckBlackKing || chessLogicFuncs.inCheckWhiteKing);
-            if (boardData.turnColor == pieceColorEnum.Black && chessLogicFuncs.inCheckBlackKing)
+            string kingIndex = "";
+            if (chessLogicFuncs.inCheckBlackKing)
             {
                 kingIndex = boardData.blackKingIndexX.ToString() + boardData.blackKingIndexY.ToString();
             }
-            if (boardData.turnColor == pieceColorEnum.White && chessLogicFuncs.inCheckWhiteKing)
+            else if (chessLogicFuncs.inCheckWhiteKing)
             {
                 kingIndex = boardData.whiteKingIndexX.ToString() + boardData.whiteKingIndexY.ToString();
             }
-            if (value)
+
+            if (kingIndex != "")
             {
                 for (int i = 0; i < formSettings.mainPanel.Controls.Count; i++)
                 {
                     Button btn = formSettings.mainPanel.Controls[i] as Button;
-                    if(btn.Name==kingIndex)
+                    if (btn.Name == kingIndex)
                     {
-                        btn.BackColor = Color.Blue;
+                        btn.BackColor = Color.FromArgb(0, 154, 205);
                     }
                 }
             }

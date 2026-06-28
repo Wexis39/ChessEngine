@@ -16,8 +16,9 @@ namespace ChessEngine.ChessEngineCore.Pieces
         public bool isFirstMove { get; set; }
         public bool enPassant { get; set; } = false;
         public int enPassantMoveCount;
-        public override void allPossibleMoves()
+        public override void allPossibleMoves(Piece[,] board = null)
         {
+            Piece[,] activeBoard = board ?? boardData.piecesBoardData;
             capturesPosArr = new List<string>();
             validPosArr = new List<string>();
             GetValidMoves();
