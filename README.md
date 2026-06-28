@@ -4,9 +4,7 @@
 [![NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download)
 [![Architecture: OOP](https://img.shields.io/badge/Architecture-Object_Oriented-green.svg)]()
 
-<img width="830" height="669" alt="Board UI 3" src="https://github.com/user-attachments/assets/4ae822fb-e8f5-4659-a384-f7863b6e4118" />
-<img width="971" height="665" alt="Board UI 2" src="https://github.com/user-attachments/assets/5b45ca72-4d66-45ab-a612-df5e6e6c9a9d" />
-<img width="638" height="669" alt="Board UI 1" src="https://github.com/user-attachments/assets/0dbe7621-342e-43c7-8540-f1f0d72e2198" />
+<img width="425" height="446" alt="Board UI 1" src="https://github.com/user-attachments/assets/0dbe7621-342e-43c7-8540-f1f0d72e2198" />
 
 ---
 
@@ -59,3 +57,7 @@ To clone and run this repository locally:
 git clone [https://github.com/Wexis39/ChessEngine.git](https://github.com/Wexis39/ChessEngine.git)
 cd ChessEngine
 dotnet build
+```
+
+<img width="415" height="334" alt="Board UI 3" src="https://github.com/user-attachments/assets/4ae822fb-e8f5-4659-a384-f7863b6e4118" />
+<img width="485" height="332" alt="Board UI 2" src="https://github.com/user-attachments/assets/5b45ca72-4d66-45ab-a612-df5e6e6c9a9d" />
