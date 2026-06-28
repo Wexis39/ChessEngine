@@ -59,5 +59,5 @@ cd ChessEngine
 dotnet build
 ```
 
-<img width="415" height="334" alt="Board UI 3" src="https://github.com/user-attachments/assets/4ae822fb-e8f5-4659-a384-f7863b6e4118" />
-<img width="485" height="332" alt="Board UI 2" src="https://github.com/user-attachments/assets/5b45ca72-4d66-45ab-a612-df5e6e6c9a9d" />
+<img width="345" height="278" alt="Board UI 3" src="https://github.com/user-attachments/assets/4ae822fb-e8f5-4659-a384-f7863b6e4118" />
+<img width="404" height="276" alt="Board UI 2" src="https://github.com/user-attachments/assets/5b45ca72-4d66-45ab-a612-df5e6e6c9a9d" />
